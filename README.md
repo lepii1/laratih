@@ -152,7 +152,7 @@ Edit file `.env` dan sesuaikan dengan konfigurasi database lokal:
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=dev_mahasiswa
+DB_DATABASE=latihan
 DB_USERNAME=root
 DB_PASSWORD=
 ```
