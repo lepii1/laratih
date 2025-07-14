@@ -60,8 +60,6 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
-Berikut versi **kata-kata sendiri** dari langkah-langkah instalasi Laravel + Breeze + CRUD siswa yang kamu minta, lengkap dan terstruktur, namun tetap berdasarkan referensi yang kamu berikan:
-
 ---
 
 # 🚀 Langkah Membuat Aplikasi Laravel CRUD Siswa
@@ -132,16 +130,18 @@ php artisan make:controller SiswaController --resource --model=Siswa
 
 ### 8. Edit File Migration `create_siswas_table`
 
-Buka file migration di `database/migrations/` lalu isi seperti berikut:
+Buka file migration di `database/migrations/` (cari file yang seperti ini (nama file mirip xxxx_xx_xx_create_siswas_table.php) lalu isi seperti berikut:
 
 ```php
-$table->id();
-$table->string('nama', 100);
-$table->text('alamat');
-$table->string('agama');
-$table->boolean('jenis_kelamin'); // 1 = Laki-laki, 0 = Perempuan
-$table->string('asal_sekolah');
-$table->timestamps();
+Schema::create('siswas', function (Blueprint $table) {
+    $table->id();
+    $table->string('nama', 100);
+    $table->text('alamat');
+    $table->string('agama');
+    $table->boolean('jenis_kelamin'); // 1 untuk laki-laki, 0 untuk perempuan
+    $table->string('asal_sekolah');
+    $table->timestamps();
+});
 ```
 
 ### 9. Atur Koneksi Database
@@ -273,7 +273,7 @@ Gantikan bagian isi sebelumnya (`{{ __("You're logged in index page!") }}`) deng
 
 ---
 
-# ✅ Lanjutan CRUD Data Siswa (Create, Edit, Delete + SweetAlert)
+# ✅ CRUD Data Siswa (Create, Edit, Delete + SweetAlert)
 
 ---
 
@@ -420,7 +420,7 @@ public function destroy($id)
 
 ## ✅ 19. Tampilkan Tombol Aksi di Tabel
 
-Update file `index.blade.php`, bagian tabel `Aksi`:
+Update file `index.blade.php`, bagian tabel `Action`:
 
 ```blade
 <td class="border px-4 py-2">
@@ -478,3 +478,36 @@ Di bawah halaman (`index.blade.php`), tambahkan:
 ```
 
 ---
+Siap! Berikut versi **lebih santai** dan **naratif lengkap** dari semua proses yang telah kamu lakukan — mulai dari setup project Laravel, instalasi Breeze, sampai fitur CRUD + notifikasi:
+
+---
+
+## 🎯 Proyek Laravel: CRUD Siswa + Notifikasi
+
+Setelah mengikuti seluruh langkah dari awal, sekarang kita udah berhasil bikin sebuah aplikasi Laravel yang cukup lengkap. Aplikasinya bukan cuma bisa login dan register aja, tapi juga udah mendukung fitur **CRUD data siswa** yang terintegrasi dengan autentikasi dari **Laravel Breeze**.
+
+---
+
+### 🚧 Proses Singkat yang Kita Lalui
+
+1. **Mulai dari awal**: Kita buat project baru pakai Laravel dengan command `composer create-project`, lalu lanjut install Breeze buat urusan login-register biar cepat dan ringan.
+2. **Install frontend**: Setelah itu, kita compile aset CSS dan JS pakai `npm install` dan `npm run dev`.
+3. **Setup database**: Kita juga sudah atur `.env` dan bikin tabel siswa lengkap dengan field seperti nama, alamat, agama, jenis kelamin, dan asal sekolah.
+4. **Model & Controller**: Dibuat otomatis pakai Artisan, jadi tinggal fokus ke logika controller dan isi form-nya di blade.
+5. **Routing & View**: Kita daftarkan route resource untuk `siswa`, dan tampilkan datanya di view blade.
+6. **Form tambah & edit**: Kita buat file `create.blade.php` dan `edit.blade.php` untuk menangani input user.
+7. **Aksi hapus**: Kita tambahkan fitur delete data lengkap dengan konfirmasi sebelum hapus.
+8. **SweetAlert2**: Semua aksi seperti tambah, edit, dan hapus sekarang muncul notifikasi interaktif yang lebih modern dan user-friendly.
+
+---
+
+### 🎉 Hasil Akhir yang Sudah Jadi
+
+✅ Aplikasi bisa digunakan untuk menambahkan, mengedit, dan menghapus data siswa <br>
+✅ Tersedia notifikasi sukses saat data berhasil ditambah, diubah, atau dihapus <br>
+✅ Ada popup konfirmasi sebelum menghapus data agar lebih aman <br>
+✅ Seluruh fitur terhubung langsung dengan autentikasi Laravel Breeze <br>
+✅ Tampilan sederhana, rapi, dan siap dikembangkan lebih lanjut
+
+---
+
